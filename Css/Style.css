@@ -1,0 +1,135 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+*
+{
+    margin:0;
+    padding:0;
+font-family: 'Inter', sans-serif;
+}
+body
+{
+    background-color:#2b2b2b;
+}
+.App
+{
+    position:absolute;
+    width:95.9%;
+    height:95%;
+    background-color: white ;
+    top:2%;
+    left:1.7%;
+    border-radius:0.2em;
+    box-shadow: 30px 30px 10px 5px #2b2b2b;
+}
+.messagecontainer
+{
+    position:absolute;
+    width:98%;
+    height:98%;
+    top:0.6%;
+    left:1%;
+    background-color:white;
+    opacity: 0.8;
+    border-radius:0.2em;
+}
+.messagelist
+{
+    position:absolute;
+    width:97.5%;
+    height:85%;
+    background-color:#6082B6;
+    top:2.6em;
+    left:0.5%;
+    opacity: 0.7;
+    padding-left:2em;
+    overflow-y: scroll;
+    box-shadow: 30px 30px 10px 5px #2b2b2b;
+    border:none;
+  
+
+}
+
+.inputcontainer
+{
+    position: absolute;
+    bottom:1%;
+    width:112em;
+    height:4em;
+    left:1.5%;
+    opacity: 0.7;
+    background-color: #6082B6;
+    padding-top:1.4em;
+    border:none;
+    border-bottom-right-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
+    box-shadow: 10px 10px 10px 5px #2b2b2b;
+  
+ 
+}
+.messageinput
+{
+    padding:0.4em;
+    width:55em;
+    font-size:1em;
+    margin-left:27.9em;
+    border-radius:0.2em;
+    background-color: Azure;
+    border:none;
+    color:#2b2b2b;
+ 
+}
+.messagepush
+{
+    width: 3em;
+    height: 3em;
+    border-radius:100%;
+    text-align: center;
+    background-color: #6082B6;
+    border:1px solid azure;
+    cursor:pointer;
+    margin-left:0.6em;
+}
+.Mymessagemessage
+{
+    width:auto;
+    height:auto;
+    background-color: azure;
+    border:1px solid #2b2b2b;
+    list-style: none;
+
+    margin-top:2em;
+    display: flex;
+    flex-direction: column;
+}
+.Incomingmessagemessage
+{
+    width:auto;
+    height:auto;
+    background-color: lightblue;
+    border:1px solid #2b2b2b;
+    list-style: none;
+    margin-left:10em;
+    margin-top:2em;
+    display: flex;
+    flex-direction: column;
+}
+.iconcontainer
+{
+    position:absolute;
+    width:112em;
+    height:2.6em;
+    background-color:azure;
+    top:1%;
+    left:1.5%;
+    color:#A7C7E7;
+    text-align: center;
+}
+.logo
+{
+    position:absolute;
+    width:3em;
+    height:2.8em;
+    border-radius:none;
+    left:34.5%;
+
+}
