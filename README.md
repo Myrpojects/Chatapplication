@@ -1,1 +1,1 @@
-# Talkit message Application
+# Talkit-realtime-messaging-app
