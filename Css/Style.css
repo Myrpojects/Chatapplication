@@ -153,36 +153,4 @@ border-bottom-right-radius: 0.5em;
     margin-top:0.2em;
     margin-bottom:0.2em;
 }
-.iconcontainer
-{
-    position:absolute;
-    width:112em;
-    height:2.6em;
-    background-color:#6082B6;
-    top:1%;
-    left:1.5%;
-    text-align: center;
-    border:none;
-    border-top-left-radius: 0.5em;
-    border-top-right-radius: 0.5em;
 
-
-}
-.iconcontainer h1 
-{
-    color:#ebebeb;
-
-}
-.logo
-{
-    position:absolute;
-    width:3em;
-    height:2.8em;
-    border-radius:none;
-    left:34.5%;
-
-}
-.date
-{
-
-}
