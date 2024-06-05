@@ -1,67 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talkit message application</title>
+const messagecontainer = document.querySelector(".messagecontainer");
+const iconcontainer = document.querySelector(".iconcontainer");
+const inputcontainer = document.querySelector(".inputcontainer");
+const app1 = document.querySelector(".App");
+const login = document.querySelector(".login");
+const loginbutton = document.querySelector(".loginbutton");
+const logininput = document.querySelector(".logininput");
+const messagepush = document.querySelector(".messagepush");
+const messageinput = document.querySelector(".messageinput");
+const loginerror = document.querySelector(".loginerror");
+const mymessageadd = document.querySelector(".mymessageadd");
 
-    <link rel="stylesheet" href="Css/Style.css">
-    <link rel="icon" href="İmg/message(1).png" type="image/x-icon"> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
-        
+// Ana containerler silindi
+messagecontainer.remove();
+iconcontainer.remove();
+inputcontainer.remove();
 
-
-        <div class="App">
-            
-            <div class="login">
-                 
-               
-                <div class="logincontainer">
-                    <img src="İmg/message(1).png" alt="" class="Applogo">
-                           <span>Sohbete başlamak için kullanıcı adınızı giriniz</span>
-                           <input type="text" class="logininput" placeholder="Kullanıcı adınızı giriniz">
-                           <button class="loginbutton">Giriş yap</button>
-                           <h3 class="loginerror"></h3>
-                </div>
-            </div>
-            
-                  <div class="messagecontainer">
-
-                         <ul class="messagelist">
-
-                            <!--Mesajlar-->
-                         <li class="Mymessagemessage">
-                            <span class="mymessageadd">Siz</span>
-                            <p class="Mmessage"></p>
-                            <span class="date">Gönderilen saat <span class="datevalue">12:00</span></span>
-                        </li>
-                         
-                    
-                         </ul>
-
-                     
-                  </div>
-                
-              
-                  <div class="inputcontainer">
-                    <input type="text" class="messageinput" placeholder="Mesaj gönder">
-                    <button class="messagepush"><i class="fa-regular fa-paper-plane"></i></button>
-                   
-                 </div>
-                 <div class="iconcontainer">
-                         <img src="İmg/message(1).png" alt="" class="logo">
-                         <h1>Talkit message application</h1>
-                 </div>
-        </div>
-    
+// Login sayfası eklendi
+app1.appendChild(login);
 
 
 
+const LoginF = () => {
+  let username = logininput.value;
 
-    <script src="Js/App.js"></script>
+  if (username.length > 0) {
+    loginerror.textContent = "";
+    login.remove();
+    mymessageadd.textContent = username;
+    app1.appendChild(messagecontainer);
+    app1.appendChild(iconcontainer);
+    app1.appendChild(inputcontainer);
 
-    
-</body>
-</html>
+
+    const sendmessageF = () => {
+
+        document.querySelector(".Mmessage").innerHTML=messageinput.value;
+    };
+
+    messagepush.addEventListener("click", sendmessageF);
+  } else {
+    loginerror.textContent = "Giriş yapabilmek için bir isim giriniz";
+
+    setTimeout(function() {
+      loginerror.textContent = "";
+    }, 1000);
+  }
+};
+
+loginbutton.addEventListener("click", LoginF);
