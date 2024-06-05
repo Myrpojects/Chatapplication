@@ -18,7 +18,44 @@ inputcontainer.remove();
 // Login sayfası eklendi
 app1.appendChild(login);
 
+/*-------------------------------------------------------------------------------------*/
 
+
+
+const firebaseConfig = {
+/*Firebase projesinin config alanındaki eklenecek veriler*/
+
+
+
+
+
+
+
+
+
+
+  
+};
+
+
+const app = firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+
+
+database.ref("messages").push().set({
+  sender: "Deneme",
+  message: "deneme"
+});
+
+const init = () => {
+
+  const app = firebase.initializeApp(firebaseConfig);
+
+  firebase.database().ref("messages").push().set({
+    sender: "tcf",
+    message: "deneme"
+  });
+};
 
 const LoginF = () => {
   let username = logininput.value;
@@ -30,12 +67,9 @@ const LoginF = () => {
     app1.appendChild(messagecontainer);
     app1.appendChild(iconcontainer);
     app1.appendChild(inputcontainer);
+    init();
 
-
-    const sendmessageF = () => {
-
-        document.querySelector(".Mmessage").innerHTML=messageinput.value;
-    };
+    const sendmessageF = () => {};
 
     messagepush.addEventListener("click", sendmessageF);
   } else {
