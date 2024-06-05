@@ -9,7 +9,11 @@ const messagepush = document.querySelector(".messagepush");
 const messageinput = document.querySelector(".messageinput");
 const loginerror = document.querySelector(".loginerror");
 const mymessageadd = document.querySelector(".mymessageadd");
+const messagelist=document.querySelector(".messagelist");
+const myname=document.querySelector(".myname");
 
+
+messagelist.textContent="";
 // Ana containerler silindi
 messagecontainer.remove();
 iconcontainer.remove();
@@ -22,48 +26,52 @@ app1.appendChild(login);
 
 
 
-const firebaseConfig = {
-/*Firebase projesinin config alanındaki eklenecek veriler*/
-
-
-
-
-
-
-
-
-
-
-  
-};
-
-
-const app = firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
-
-
-database.ref("messages").push().set({
-  sender: "Deneme",
-  message: "deneme"
-});
+// Your web app's Firebase configuration
 
 const init = () => {
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+/*Firebase uygulama verileri*/ 
+    };
+  
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
 
-  const app = firebase.initializeApp(firebaseConfig);
 
-  firebase.database().ref("messages").push().set({
-    sender: "tcf",
-    message: "deneme"
-  });
-};
-
+    /*Veri tabanına veri gönderme alanı*/
+  
+   if(logininput.value==logininput.value)
+    {
+        let kullanici=logininput.value;
+        firebase.database().ref("Messages").push().set({
+               Giris:kullanici+" Giris yapti",
+        });
+         
+                     
+                     const kullanici1=()=>
+                      {
+                        let mesajgonderen=logininput.value;
+                          let mesaj=document.querySelector(".messageinput").value;
+                          firebase.database().ref("Messages").push().set({
+                            sender: logininput.value,
+                              Gonderilenmesaj: mesaj
+                          });
+                      }   
+      
+      
+      
+      document.querySelector(".messagepush").addEventListener("click",kullanici1);
+    }
+  }
+  
+  
 const LoginF = () => {
   let username = logininput.value;
 
   if (username.length > 0) {
     loginerror.textContent = "";
     login.remove();
-    mymessageadd.textContent = username;
+    myname.textContent = username;
     app1.appendChild(messagecontainer);
     app1.appendChild(iconcontainer);
     app1.appendChild(inputcontainer);
