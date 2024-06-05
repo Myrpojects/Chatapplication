@@ -31,39 +31,54 @@ app1.appendChild(login);
 const init = () => {
     // Your web app's Firebase configuration
     const firebaseConfig = {
-/*Firebase uygulama verileri*/ 
+      /*Firebase config verileri buraya eklenecek*/
     };
   
     // Initialize Firebase
     const app = firebase.initializeApp(firebaseConfig);
+    let database1;
+ 
+    
 
 
-    /*Veri tabanına veri gönderme alanı*/
+
+      
+             firebase.database().ref("Messages").on("child_added",(snapshot)=>
+            {
+                let html="";
+                let Myname=logininput.value;
+                    
+                if(Myname==snapshot.val().sender)
+                    {
+                              html+='<li class="Mymessagemessage">';
+                              html+='<span class="Mymessage1">'+snapshot.val().sender+'</span>';
+                              html+='<p class="Mmessage">'+snapshot.val().Message+'</p>';
+                              html+='  <span class="date">Gönderilen saat <span class="datevalue">'+Tarihformat(snapshot.val().time)+'</span></span>';
+                              html+=' </li>';   
+                    }
+
+                    else 
+                    {
+                        html+='<li class="Incomingmessagemessage">';
+                        html+='<span class="Mymessage1">'+snapshot.val().sender+'</span>';
+                        html+='<p class="Mmessage">'+snapshot.val().Message+'</p>';
+                        html+='  <span class="date">Gönderilen saat <span class="datevalue">'+Tarihformat(snapshot.val().time)+'</span></span>';
+                        html+='</li>';  
+                    }
+
+                    messagelist.innerHTML+=html;
+                    messagelist.scroll({behavior:"smooth", top:99999999999999999999999999999999});
+            });
   
-   if(logininput.value==logininput.value)
-    {
-        let kullanici=logininput.value;
-        firebase.database().ref("Messages").push().set({
-               Giris:kullanici+" Giris yapti",
-        });
-         
-                     
-                     const kullanici1=()=>
-                      {
-                        let mesajgonderen=logininput.value;
-                          let mesaj=document.querySelector(".messageinput").value;
-                          firebase.database().ref("Messages").push().set({
-                            sender: logininput.value,
-                              Gonderilenmesaj: mesaj
-                          });
-                      }   
-      
-      
-      
-      document.querySelector(".messagepush").addEventListener("click",kullanici1);
-    }
-  }
-  
+}
+                const Tarihformat=(stamp)=>
+                {
+                         const dt=new Date(stamp);
+                         const saat= "0" +dt.getHours();
+                         const dakika=""+dt.getMinutes();
+                         const format= saat.substr(-2)+":"+ dakika.substr(-2);
+                         return format; 
+                }
   
 const LoginF = () => {
   let username = logininput.value;
@@ -71,7 +86,7 @@ const LoginF = () => {
   if (username.length > 0) {
     loginerror.textContent = "";
     login.remove();
-    myname.textContent = username;
+    
     app1.appendChild(messagecontainer);
     app1.appendChild(iconcontainer);
     app1.appendChild(inputcontainer);
@@ -89,4 +104,21 @@ const LoginF = () => {
   }
 };
 
+
+
+       const mesajgonder=(e)=>
+        {
+        username=logininput.value;
+        let msj=messageinput.value;
+        firebase.database().ref("Messages").push().set({
+        sender:username,
+        Message:msj,
+        time:firebase.database.ServerValue.TIMESTAMP,
+        });
+        }
+        
+        
+
+messagepush.addEventListener("click",mesajgonder);
+messageinput.addEventListener("submit",mesajgonder)
 loginbutton.addEventListener("click", LoginF);
